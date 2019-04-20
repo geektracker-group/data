@@ -1,0 +1,57 @@
+{
+  "name": "torrentpier/torrentpier",
+  "description": "TorrentPier. Bull-powered BitTorrent tracker engine",
+  "type": "project",
+  "keywords": [
+    "bittorrent",
+    "forum",
+    "torrent",
+    "tracker"
+  ],
+  "homepage": "https://torrentpier.com/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Exile",
+      "email": "admin@torrentpier.com",
+      "homepage": "https://github.com/Exile37",
+      "role": "Developer"
+    },
+    {
+      "name": "Diolektor",
+      "homepage": "https://github.com/VasyOk",
+      "role": "Developer"
+    },
+    {
+      "name": "PheRum",
+      "homepage": "https://github.com/PheRum",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "support@torrentpier.com",
+    "issues": "https://github.com/torrentpier/torrentpier/issues",
+    "forum": "https://torrentpier.com/forum/",
+    "docs": "https://docs.torrentpier.com/"
+  },
+  "require": {
+    "php": "^5.6 || ^7.0",
+    "bugsnag/bugsnag": "^3.5",
+    "filp/whoops": "^2.1",
+    "gigablah/sphinxphp": "^2.0",
+    "google/recaptcha": "^1.1",
+    "longman/ip-tools": "^1.2",
+    "rych/bencode": "^1.0",
+    "samdark/sitemap": "^2.0",
+    "swiftmailer/swiftmailer": "^5.4",
+    "symfony/dotenv": "^3.3",
+    "symfony/var-dumper": "^3.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "TorrentPier\\": "src/"
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}

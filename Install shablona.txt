@@ -1,0 +1,264 @@
+Открыть Viewtopic.php
+найти
+
+//
+// Topic watch information
+//
+$s_watching_topic = $s_watching_topic_img = '';
+if ($can_watch_topic) {
+    if ($is_watching_topic) {
+        $s_watching_topic = "<a href=\"" . TOPIC_URL . $topic_id . "&amp;unwatch=topic&amp;start=$start&amp;sid=" . $userdata['session_id'] . '">' . $lang['STOP_WATCHING_TOPIC'] . '</a>';
+        $s_watching_topic_img = (isset($images['topic_un_watch'])) ? "<a href=\"" . TOPIC_URL . "$topic_id&amp;unwatch=topic&amp;start=$start&amp;sid=" . $userdata['session_id'] . '"><img src="' . $images['topic_un_watch'] . '" alt="' . $lang['STOP_WATCHING_TOPIC'] . '" title="' . $lang['STOP_WATCHING_TOPIC'] . '" border="0"></a>' : '';
+    } else {
+        $s_watching_topic = "<a href=\"" . TOPIC_URL . $topic_id . "&amp;watch=topic&amp;start=$start&amp;sid=" . $userdata['session_id'] . '">' . $lang['START_WATCHING_TOPIC'] . '</a>';
+        $s_watching_topic_img = (isset($images['Topic_watch'])) ? "<a href=\"" . TOPIC_URL . "$topic_id&amp;watch=topic&amp;start=$start&amp;sid=" . $userdata['session_id'] . '"><img src="' . $images['Topic_watch'] . '" alt="' . $lang['START_WATCHING_TOPIC'] . '" title="' . $lang['START_WATCHING_TOPIC'] . '" border="0"></a>' : '';
+    }
+}
+
+Заменить на
+
+//
+// Topic watch information
+//
+$s_watching_topic = $s_watching_topic_img = '';
+if ($can_watch_topic) {
+    if ($is_watching_topic) {
+        $s_watching_topic = "<a href=\"" . TOPIC_URL . $topic_id . "&amp;unwatch=topic&amp;start=$start&amp;sid=" . $userdata['session_id'] . '" class="btn btn-block btn-primary">' . $lang['STOP_WATCHING_TOPIC'] . '</a>';
+        $s_watching_topic_img = (isset($images['topic_un_watch'])) ? "<a href=\"" . TOPIC_URL . "$topic_id&amp;unwatch=topic&amp;start=$start&amp;sid=" . $userdata['session_id'] . '"><img src="' . $images['topic_un_watch'] . '" alt="' . $lang['STOP_WATCHING_TOPIC'] . '" title="' . $lang['STOP_WATCHING_TOPIC'] . '" border="0"></a>' : '';
+    } else {
+        $s_watching_topic = "<a href=\"" . TOPIC_URL . $topic_id . "&amp;watch=topic&amp;start=$start&amp;sid=" . $userdata['session_id'] . '" class="btn btn-block btn-primary">' . $lang['START_WATCHING_TOPIC'] . '</a>';
+        $s_watching_topic_img = (isset($images['Topic_watch'])) ? "<a href=\"" . TOPIC_URL . "$topic_id&amp;watch=topic&amp;start=$start&amp;sid=" . $userdata['session_id'] . '"><img src="' . $images['Topic_watch'] . '" alt="' . $lang['START_WATCHING_TOPIC'] . '" title="' . $lang['START_WATCHING_TOPIC'] . '" border="0"></a>' : '';
+    }
+}
+
+
+открыть Posting.php
+найти
+
+// Topic type selection
+$topic_type_toggle = '';
+if ($mode == 'newtopic' || ($mode == 'editpost' && $post_data['first_post'])) {
+    $template->assign_block_vars('switch_type_toggle', array());
+
+    if ($is_auth['auth_sticky']) {
+        $topic_type_toggle .= '<label><input type="radio" name="topictype" value="' . POST_STICKY . '"';
+        if (isset($post_data['topic_type']) && ($post_data['topic_type'] == POST_STICKY || $topic_type == POST_STICKY)) {
+            $topic_type_toggle .= ' checked="checked"';
+        }
+        $topic_type_toggle .= ' /> ' . $lang['POST_STICKY'] . '</label>&nbsp;&nbsp;';
+    }
+
+    if ($is_auth['auth_announce']) {
+        $topic_type_toggle .= '<label><input type="radio" name="topictype" value="' . POST_ANNOUNCE . '"';
+        if (isset($post_data['topic_type']) && ($post_data['topic_type'] == POST_ANNOUNCE || $topic_type == POST_ANNOUNCE)) {
+            $topic_type_toggle .= ' checked="checked"';
+        }
+        $topic_type_toggle .= ' /> ' . $lang['POST_ANNOUNCEMENT'] . '</label>&nbsp;&nbsp;';
+    }
+
+    if ($topic_type_toggle != '') {
+        $topic_type_toggle = $lang['POST_TOPIC_AS'] . ': <label><input type="radio" name="topictype" value="' . POST_NORMAL . '"' . ((!isset($post_data['topic_type']) || $post_data['topic_type'] == POST_NORMAL || $topic_type == POST_NORMAL) ? ' checked="checked"' : '') . ' /> ' . $lang['POST_NORMAL'] . '</label>&nbsp;&nbsp;' . $topic_type_toggle;
+    }
+}
+
+
+Заменить на
+
+// Topic type selection
+$topic_type_toggle = '';
+if ($mode == 'newtopic' || ($mode == 'editpost' && $post_data['first_post'])) {
+    $template->assign_block_vars('switch_type_toggle', array());
+
+    if ($is_auth['auth_sticky']) {
+        $topic_type_toggle .= '<tr><td><div class="radio radio-success"><input type="radio" name="topictype" value="' . POST_STICKY . '"';
+        if (isset($post_data['topic_type']) && ($post_data['topic_type'] == POST_STICKY || $topic_type == POST_STICKY)) {
+            $topic_type_toggle .= ' checked="checked"';
+        }
+        $topic_type_toggle .= ' /><label> ' . $lang['POST_STICKY'] . '</label></div></td></tr>';
+    }
+
+    if ($is_auth['auth_announce']) {
+        $topic_type_toggle .= '<tr><td><div class="radio radio-success"><input type="radio" name="topictype" value="' . POST_ANNOUNCE . '"';
+        if (isset($post_data['topic_type']) && ($post_data['topic_type'] == POST_ANNOUNCE || $topic_type == POST_ANNOUNCE)) {
+            $topic_type_toggle .= ' checked="checked"';
+        }
+        $topic_type_toggle .= ' /><label>' . $lang['POST_ANNOUNCEMENT'] . '</label></div></td></tr>';
+    }
+
+    if ($topic_type_toggle != '') {
+        $topic_type_toggle = '<tr><td class="text-danger text-center"><b>' .  $lang['POST_TOPIC_AS'] . '</b></td></tr>' . '<tr><td> <div class="radio radio-success"><input type="radio" name="topictype" value="' . POST_NORMAL . '"' . ((!isset($post_data['topic_type']) || $post_data['topic_type'] == POST_NORMAL || $topic_type == POST_NORMAL) ? ' checked="checked"' : '') . ' /><label> ' . $lang['POST_NORMAL'] . '</label></div></td></tr>' . $topic_type_toggle;
+    }
+}
+
+
+Найти 
+
+        $topic_type_toggle .= '<nobr><input type="checkbox" name="' . $dl_type_name . '" id="topic_dl_type_id" ' . $dl_ds . $dl_ch . ' /><label for="topic_dl_type_id"> ' . $lang['POST_DOWNLOAD'] . '</label></nobr>';
+        
+Заменить на
+
+        $topic_type_toggle .= '<tr><td><div class="checkbox checkbox-success"><input type="checkbox" name="' . $dl_type_name . '" id="topic_dl_type_id" ' . $dl_ds . $dl_ch . ' /><label for="topic_dl_type_id"> ' . $lang['POST_DOWNLOAD'] . '</label></div></td></tr>';
+
+В main.php добавить
+
+// Шаблон
+$lang['FOLDERS'] = 'Папки';
+$lang['REGLOG'] = 'Логин';
+$lang['REGTITL'] = 'Пожалуйста введите логин';
+$lang['REGPASS'] = 'Пожалуйста введите пароль';
+$lang['REGLOGPASS'] = 'Пожалуйста введите логин и пароль';
+
+найти
+
+$lang['INBOX_SIZE'] = 'Ваша папка &laquo;Входящие&raquo;<br />заполнена на <b>%d%%</b>'; // eg. Your Inbox is 50% full
+$lang['SENTBOX_SIZE'] = 'Ваша папка &laquo;Отправленные&raquo;<br />заполнена на <b>%d%%</b>';
+$lang['SAVEBOX_SIZE'] = 'Ваша папка &laquo;Сохраненные&raquo;<br />заполнена на <b>%d%%</b>';
+
+заменить на
+
+$lang['INBOX_SIZE'] = 'Ваша папка &laquo;Входящие&raquo; заполнена на <b>%d%%</b>'; // eg. Your Inbox is 50% full
+$lang['SENTBOX_SIZE'] = 'Ваша папка &laquo;Отправленные&raquo; заполнена на <b>%d%%</b>';
+$lang['SAVEBOX_SIZE'] = 'Ваша папка &laquo;Сохраненные&raquo; заполнена на <b>%d%%</b>';
+
+
+Открыть memberlist.php
+
+найти
+
+// <select> mode
+$select_sort_mode = '<select name="mode">';
+
+заменить на 
+
+// <select> mode
+$select_sort_mode = '<select class="form-control m-t"name="mode">';
+
+найти
+
+// <select> order
+$select_sort_order = '<select name="order">';
+
+заменить на 
+
+$select_sort_order = '<select class="form-control m-t" name="order">';
+
+Найти
+
+$select_letter .= ':&nbsp;';
+$select_letter .= ($by_letter == 'others') ? '<b>' . $lang['OTHERS'] . '</b>&nbsp;' : '<a class="genmed" href="' . ("memberlist.php?letter=others&amp;mode=$mode&amp;order=$sort_order") . '">' . $lang['OTHERS'] . '</a>&nbsp;';
+$select_letter .= ':&nbsp;';
+$select_letter .= ($by_letter == 'all') ? '<b>' . $lang['ALL'] . '</b>' : '<a class="genmed" href="' . ("memberlist.php?letter=all&amp;mode=$mode&amp;order=$sort_order") . '">' . $lang['ALL'] . '</a>';
+
+Заменить на 
+
+$select_letter .= ':&nbsp;';
+$select_letter .= ($by_letter == 'others') ? '<span class="label label-danger">' . $lang['OTHERS'] . '</span>&nbsp;' : '<a href="' . ("memberlist.php?letter=others&amp;mode=$mode&amp;order=$sort_order") . '"><span class="label label-success">' . $lang['OTHERS'] . '</span></a>&nbsp;';
+$select_letter .= ($by_letter == 'all') ? '<span class="label label-danger">' . $lang['ALL'] . '</span>' : '<a href="' . ("memberlist.php?letter=all&amp;mode=$mode&amp;order=$sort_order") . '"><span class="label label-success">' . $lang['ALL'] . '</span></a>';
+
+
+открыть viewforum.php
+найти
+
+$sort_list = '<select name="sort">' . get_forum_display_sort_option($sort_value, 'list', 'sort') . '</select>';
+$order_list = '<select name="order">' . get_forum_display_sort_option($order_value, 'list', 'order') . '</select>';
+$s_display_order = '&nbsp;' . $lang['SORT_BY'] . ':&nbsp;' . $sort_list . '&nbsp;' . $order_list . '&nbsp;';
+
+Заменить на 
+
+$sort_list = '<select class="form-control m-b" name="account" name="sort">' . get_forum_display_sort_option($sort_value, 'list', 'sort') . '</select>';
+$order_list = '<select class="form-control m-b" name="account" name="order">' . get_forum_display_sort_option($order_value, 'list', 'order') . '</select>';
+	$s_display_order = $sort_list;
+	$s_display_order1 = $order_list;
+    
+    
+найти
+
+    'S_DISPLAY_ORDER' => $s_display_order,
+    
+После вставить
+
+	'S_DISPLAY_ORDER1'     => $s_display_order1,  
+    
+Открыть Privmsg.php
+
+найти
+
+    $post_pm = '<a href="' . $post_pm . '">' . $lang['POST_NEW_PM'] . '</a>';
+    
+Заменить на
+
+    $post_pm = '<a href="' . $post_pm . '" class="btn btn-primary btn-block m-b-md">' . $lang['POST_NEW_PM'] . '</a>';
+    
+найти
+
+$inbox_url = ($folder != 'inbox' || $mode != '') ? '<a href="' . PM_URL . "?folder=inbox" . '">' . $lang['INBOX'] . '</a>' : $lang['INBOX'];
+$outbox_url = ($folder != 'outbox' || $mode != '') ? '<a href="' . PM_URL . "?folder=outbox" . '">' . $lang['OUTBOX'] . '</a>' : $lang['OUTBOX'];
+$sentbox_url = ($folder != 'sentbox' || $mode != '') ? '<a href="' . PM_URL . "?folder=sentbox" . '">' . $lang['SENTBOX'] . '</a>' : $lang['SENTBOX'];
+$savebox_url = ($folder != 'savebox' || $mode != '') ? '<a href="' . PM_URL . "?folder=savebox" . '">' . $lang['SAVEBOX'] . '</a>' : $lang['SAVEBOX'];
+
+заменить на
+
+$inbox_url = ($folder != 'inbox' || $mode != '') ? '<a href="' . PM_URL . "?folder=inbox" . '"><i class="fa fa-envelope"></i>' . $lang['INBOX'] . '</a>' : '<a><i class="fa fa-envelope text-danger"></i>' . $lang['INBOX'] . '</a>';
+$outbox_url = ($folder != 'outbox' || $mode != '') ? '<a href="' . PM_URL . "?folder=outbox" . '"><i class="fa fa-paper-plane"></i>' . $lang['OUTBOX'] . '</a>' : '<a><i class="fa fa-paper-plane text-danger"></i>' . $lang['OUTBOX'] . '</a>';
+$sentbox_url = ($folder != 'sentbox' || $mode != '') ? '<a href="' . PM_URL . "?folder=sentbox" . '"><i class="fa fa-external-link-square"></i>' . $lang['SENTBOX'] . '</a>' : '<a><i class="fa fa-external-link-square text-danger"></i>' . $lang['SENTBOX'] . '</a>';
+$savebox_url = ($folder != 'savebox' || $mode != '') ? '<a href="' . PM_URL . "?folder=savebox" . '"><i class="fa fa-save"></i>' . $lang['SAVEBOX'] . '</a>' : '<a><i class="fa fa-save text-danger"></i>' . $lang['SAVEBOX'] . '</a>';
+
+Найти
+
+            $icon_flag = ($flag == PRIVMSGS_NEW_MAIL || $flag == PRIVMSGS_UNREAD_MAIL) ? $images['pm_unreadmsg'] : $images['pm_readmsg'];
+            
+Заменить на
+
+            $icon_flag = ($flag == PRIVMSGS_NEW_MAIL || $flag == PRIVMSGS_UNREAD_MAIL) ? 'class="fa pe-7s-mail fa-2x text-success"' : 'class="fa pe-7s-mail-open fa-2x"';
+
+найти
+
+    $post_icons = array(
+        'post_img' => '<a href="' . $post_urls['post'] . '"><img src="' . $images['pm_postmsg'] . '" alt="' . $lang['POST_NEW_PM'] . '" border="0" /></a>',
+        'post' => '<a href="' . $post_urls['post'] . '">' . $lang['POST_NEW_PM'] . '</a>',
+        'reply_img' => '<a href="' . $post_urls['reply'] . '"><img src="' . $images['pm_replymsg'] . '" alt="' . $lang['POST_REPLY_PM'] . '" border="0" /></a>',
+        'reply' => '<a href="' . $post_urls['reply'] . '">' . $lang['POST_REPLY_PM'] . '</a>',
+        'quote_img' => '<a href="' . $post_urls['quote'] . '"><img src="' . $images['pm_quotemsg'] . '" alt="' . $lang['POST_QUOTE_PM'] . '" border="0" /></a>',
+        'quote' => '<a href="' . $post_urls['quote'] . '">' . $lang['POST_QUOTE_PM'] . '</a>',
+        'edit_img' => '<a href="' . $post_urls['edit'] . '"><img src="' . $images['pm_editmsg'] . '" alt="' . $lang['EDIT_PM'] . '" border="0" /></a>',
+        'edit' => '<a href="' . $post_urls['edit'] . '">' . $lang['EDIT_PM'] . '</a>'
+        
+Заменить на
+
+    $post_icons = array(
+        'post_img' => '<a href="' . $post_urls['post'] . '"><img src="' . $images['pm_postmsg'] . '" alt="' . $lang['POST_NEW_PM'] . '" border="0" /></a>',
+        'post' => '<a href="' . $post_urls['post'] . '" class="btn btn-xs btn-primary">' . $lang['POST_NEW_PM'] . '</a>',
+        'reply_img' => '<a href="' . $post_urls['reply'] . '"><img src="' . $images['pm_replymsg'] . '" alt="' . $lang['POST_REPLY_PM'] . '" border="0" /></a>',
+        'reply' => '<a href="' . $post_urls['reply'] . '" class="btn btn-block btn-primary btn-sm m-b">' . $lang['POST_REPLY_PM'] . '</a>',
+        'quote_img' => '<a href="' . $post_urls['quote'] . '"><img src="' . $images['pm_quotemsg'] . '" alt="' . $lang['POST_QUOTE_PM'] . '" border="0" /></a>',
+        'quote' => '<a href="' . $post_urls['quote'] . '" class="btn btn-xs btn-primary">' . $lang['POST_QUOTE_PM'] . '</a>',
+        'edit_img' => '<a href="' . $post_urls['edit'] . '"><img src="' . $images['pm_editmsg'] . '" alt="' . $lang['EDIT_PM'] . '" border="0" /></a>',
+        'edit' => '<a href="' . $post_urls['edit'] . '" class="btn btn-xs btn-primary">' . $lang['EDIT_PM'] . '</a>'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
