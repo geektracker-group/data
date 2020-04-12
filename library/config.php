@@ -2,7 +2,7 @@
 /**
  * MIT License
  *
- * Copyright (c) 2005-2017 TorrentPier
+ * Copyright (c) 2005-2017 
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ if (!defined('BB_ROOT')) {
     die(basename(__FILE__));
 }
 
-$domain_name = 'p2p.backbenchers.net'; // enter here your primary domain name of your site
+$domain_name = ''; // enter here your primary domain name of your site
 $domain_name = (!empty($_SERVER['SERVER_NAME'])) ? $_SERVER['SERVER_NAME'] : $domain_name;
 $domain_ssl = false;
 
@@ -47,8 +47,8 @@ $bb_cfg['tp_release_codename'] = 'Aurochs';
 $bb_cfg['db'] = [
     'db' => [
         env('DB_HOST', 'localhost'),
-        env('DB_DATABASE', 'torrentpier'),
-        env('DB_USERNAME', 'root'),
+        env('DB_DATABASE', ''),
+        env('DB_USERNAME', ''),
         env('DB_PASSWORD', ''),
         'utf8',
         false
