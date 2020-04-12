@@ -1,15 +1,9 @@
-<p align="center"><a href="https://geektracker.com/"><img src="https://geektracker.com/forum/styles/default/xenforo/bull-logo.svg" width="400px" /></a></p>
-<p align="center">
-    <a href="http://geektracker.herokuapp.com/"><img src="http://geektracker.herokuapp.com/badge.svg" alt="Slack"></a>
-    <a href="https://crowdin.com/project/geektracker"><img src="https://d322cqt584bo4o.cloudfront.net/geektracker/localized.svg" alt="Crowdin"></a>
-    <a href="https://scrutinizer-ci.com/g/geektracker/geektracker/"><img src="https://img.shields.io/scrutinizer/g/geektracker/geektracker.svg" alt="Scrutinizer"></a>
-    <a href="https://www.codacy.com/app/Exile37/geektracker"><img src="https://img.shields.io/codacy/grade/8b79a63a6d464b81bf0a39923f42bdf5/master.svg" alt="Codacy"></a>
-    <br />
-    <a href="https://insight.sensiolabs.com/projects/1a5d5098-e0b0-45c2-816a-020dfd50acaf"><img src="https://img.shields.io/sensiolabs/i/1a5d5098-e0b0-45c2-816a-020dfd50acaf.svg" alt="SensioLabs Insight"></a>
-    <a href="https://travis-ci.org/geektracker/geektracker"><img src="https://img.shields.io/travis/geektracker/geektracker/master.svg" alt="Travis"></a>
-    <a href="https://circleci.com/gh/geektracker/geektracker"><img src="https://img.shields.io/circleci/project/github/geektracker/geektracker/master.svg" alt="CircleCI"></a>
-    <a href="https://codecov.io/gh/geektracker/geektracker"><img src="https://img.shields.io/codecov/c/github/geektracker/geektracker/master.svg" alt="Codecov"></a>
-</p>
+<p align="center"><img src="http://www.geektracker.net/data/avatars/gallery/noavatar.png"></p>
+<img src="http://www.geektracker.net/data/images/1.jpg">
+<img src="http://www.geektracker.net/data/images/2.jpg">
+<img src="http://www.geektracker.net/data/images/3.jpg">
+<img src="http://www.geektracker.net/data/images/4.jpg">
+<img src="http://www.geektracker.net/data/images/5.jpg">
 
 ## About geektracker
 
