@@ -1,5 +1,5 @@
 <p align="center"><img src="http://www.geektracker.net/data/avatars/gallery/noavatar.png"><br>
-   <a href="geektracker.net">www.geektracker.net</a>
+   <a href="geektracker.net">www.geektracker.net</a><br>
 contact@geektracker.net</p>
 
 <img src="http://www.geektracker.net/data/images/1.jpg">
