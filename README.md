@@ -1,6 +1,6 @@
 <p align="center"><img src="http://www.geektracker.net/data/avatars/gallery/noavatar.png"><br>
    <a href="http://geektracker.net">www.geektracker.net</a><br>
-contact@geektracker.net</p>
+geektracker.net@yandex.com
 
 <img src="http://www.geektracker.net/data/images/1.jpg">
 <img src="http://www.geektracker.net/data/images/2.jpg">
